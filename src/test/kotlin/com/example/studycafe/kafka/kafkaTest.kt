@@ -2,7 +2,6 @@ package com.example.studycafe.kafka
 
 import org.springframework.boot.test.context.SpringBootTest
 import org.springframework.kafka.core.KafkaTemplate
-import org.springframework.test.context.ActiveProfiles
 import org.springframework.test.context.TestConstructor
 import kotlin.test.Test
 
