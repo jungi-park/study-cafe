@@ -3,8 +3,13 @@ spring:
     name: study-cafe
 
   kafka:
+    bootstrap-servers: ec2-54-180-236-111.ap-northeast-2.compute.amazonaws.com:9094 # Kafka 클러스터에 대한 초기 연결에 사용할 호스트 : 포트 목록
     producer:
-      bootstrap-servers: ec2-13-125-107-45.ap-northeast-2.compute.amazonaws.com:9094 # Kafka 클러스터에 대한 초기 연결에 사용할 호스트 : 포트 목록
       ## serializer 방법은 KafkaProducerConfig 로 설정
       key-serializer: org.apache.kafka.common.serialization.StringSerializer
       value-serializer: org.apache.kafka.common.serialization.StringSerializer
+    consumer:
+      group-id: your-group-id
+      auto-offset-reset: earliest
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
