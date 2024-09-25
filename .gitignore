@@ -41,3 +41,4 @@ out/
 
 # Spring Boot configuration files
 application.yaml
+application-prod.yaml
