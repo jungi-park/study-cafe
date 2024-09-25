@@ -1,13 +1,9 @@
 package com.example.studycafe.kafka
 
-import com.example.studycafe.consumer.KafkaConsumer
-import org.springframework.beans.factory.annotation.Autowired
+import com.example.studycafe.education.consumer.KafkaConsumer
 import org.springframework.boot.test.context.SpringBootTest
-import org.springframework.kafka.annotation.KafkaListener
 import org.springframework.kafka.core.KafkaTemplate
 import org.springframework.test.context.TestConstructor
-import java.util.concurrent.CountDownLatch
-import java.util.concurrent.TimeUnit
 import kotlin.test.Test
 
 @SpringBootTest

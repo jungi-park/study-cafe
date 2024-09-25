@@ -1,0 +1,11 @@
+services:
+  db:
+    image: mysql:8.0
+    restart: always
+    environment:
+      MYSQL_DATABASE: studycafe
+      MYSQL_USER: pjg
+      MYSQL_PASSWORD: pjg12341234
+      MYSQL_ROOT_PASSWORD: pjg12341234
+    ports:
+      - "3306:3306"
