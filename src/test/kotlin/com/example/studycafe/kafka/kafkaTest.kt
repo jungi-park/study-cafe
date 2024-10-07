@@ -1,6 +1,6 @@
 package com.example.studycafe.kafka
 
-import com.example.studycafe.education.consumer.KafkaConsumer
+import com.example.studycafe.education.consumer.EducationConsumer
 import org.springframework.boot.test.context.SpringBootTest
 import org.springframework.kafka.core.KafkaTemplate
 import org.springframework.test.context.TestConstructor
@@ -10,7 +10,7 @@ import kotlin.test.Test
 @TestConstructor(autowireMode = TestConstructor.AutowireMode.ALL)
 class kafkaTest(
     private val kafkaTemplate: KafkaTemplate<String, String>,
-    private val kafkaConsumer: KafkaConsumer
+    private val educationConsumer: EducationConsumer
 ) {
 
     @Test
@@ -26,6 +26,6 @@ class kafkaTest(
         // 메시지가 수신될 때까지 대기
         Thread.sleep(1000)
 
-        println("kafkaConsumer == ${kafkaConsumer.receivedMessage}")
+//        println("kafkaConsumer == ${educationConsumer.receivedMessage}")
     }
 }

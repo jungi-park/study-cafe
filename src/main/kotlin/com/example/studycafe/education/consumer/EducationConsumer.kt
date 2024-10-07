@@ -4,13 +4,10 @@ import org.springframework.kafka.annotation.KafkaListener
 import org.springframework.stereotype.Service
 
 @Service
-class KafkaConsumer {
-
-    var receivedMessage = ""
+class EducationConsumer {
 
     @KafkaListener(topics = ["my-topic"], groupId = "parkJunGi")
-    fun listen(message: String) {
-        receivedMessage = message
-        println("Received message: $message")
+    fun listenEducationQueue(message: String) {
+        val receivedMessage = message
     }
 }
