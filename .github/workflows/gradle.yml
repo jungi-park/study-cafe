@@ -32,7 +32,7 @@ jobs:
       run: |
         docker save my-app:latest -o my-app.tar
 
-    # 아카이브 파일을 아티팩트로 업로드 (v3로 업데이트)
+    # 아카이브 파일을 아티팩트로 업로드
     - name: Upload Docker Image as Artifact
       uses: actions/upload-artifact@v3
       with:
@@ -50,6 +50,13 @@ jobs:
           echo "${{ secrets.EC2_SSH_KEY }}" > ssh_key.pem
           chmod 600 ssh_key.pem
 
+      # Docker 이미지 아카이브 다운로드
+      - name: Download Docker Image Artifact
+        uses: actions/download-artifact@v3
+        with:
+          name: my-app-image
+          path: .  # 현재 디렉토리에 다운로드
+
       # EC2에 SSH로 접속하여 배포
       - name: Deploy to EC2
         run: |
@@ -59,5 +66,9 @@ jobs:
           # EC2에 SSH로 접속하여 Docker 이미지 로드 및 실행
           ssh -o StrictHostKeyChecking=no -i ssh_key.pem ec2-user@ec2-54-180-236-111.ap-northeast-2.compute.amazonaws.com << 'EOF'
             docker load -i my-app.tar
-            docker run -d -p 80:8080 my-app:latest
+            docker run -d -p 80:8080 --env SPRING_PROFILES_ACTIVE=prod my-app:latest  # prod 프로파일 활성화
           EOF
+
+      - name: Cleanup
+        run: |
+          rm -f ssh_key.pem  # SSH 키 파일을 삭제하여 보안 강화
