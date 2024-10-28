@@ -7,8 +7,8 @@ WORKDIR /app
 # 3. Gradle Wrapper 및 소스 코드 복사
 COPY gradlew .
 COPY gradle gradle
-COPY build.gradle .
-COPY settings.gradle .
+COPY build.gradle.kts .
+COPY settings.gradle.kts .
 COPY src ./src
 
 # 4. 애플리케이션 빌드
