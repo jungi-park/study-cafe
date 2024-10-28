@@ -58,9 +58,9 @@ jobs:
     # EC2에 SSH로 접속하여 배포 (필요한 경우)
     - name: Deploy to EC2
       run: |
-        ssh -o StrictHostKeyChecking=no -i ${{ secrets.EC2_SSH_KEY }} ec2-user@<your_ec2_instance_public_ip> << 'EOF'
+        ssh -o StrictHostKeyChecking=no -i ${{ secrets.EC2_SSH_KEY }} ec2-user@ec2-54-180-236-111.ap-northeast-2.compute.amazonaws.com << 'EOF'
           # Docker 이미지 아카이브 다운로드 후 로드
-          scp -o StrictHostKeyChecking=no -i ${{ secrets.EC2_SSH_KEY }} my-app.tar ec2-user@<your_ec2_instance_public_ip>:~/
+          scp -o StrictHostKeyChecking=no -i ${{ secrets.EC2_SSH_KEY }} my-app.tar ec2-user@ec2-54-180-236-111.ap-northeast-2.compute.amazonaws.com:~/
           docker load -i my-app.tar
           docker run -d -p 80:8080 my-app:latest
         EOF
