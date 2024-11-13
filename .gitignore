@@ -40,5 +40,5 @@ out/
 .kotlin
 
 # Spring Boot configuration files
-application.yaml
-application-prod.yaml
+#application.yaml
+#application-prod.yaml
