@@ -77,9 +77,14 @@ jobs:
               docker rm my-app
             fi
           
-            # Docker 이미지 로드 및 실행
+            # 기존 모든 my-app 이미지 삭제
+            docker rmi -f $(docker images -q my-app) || true
+          
+            # Docker 이미지 로드
             docker load -i my-app.tar
-            docker run -d --name my-app -p 8080:8080 --env SPRING_PROFILES_ACTIVE=prod my-app:${{ github.sha }}
+          
+            # Docker 컨테이너 실행
+            docker run -d --name my-app -p 8080:8080 --env SPRING_PROFILES_ACTIVE=prod my-app
           EOF
 
       - name: Cleanup
