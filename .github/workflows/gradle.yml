@@ -64,6 +64,9 @@ jobs:
 
       - name: Deploy to EC2
         run: |
+          # Docker 이미지 아카이브를 EC2로 전송
+          scp -o StrictHostKeyChecking=no -i ssh_key.pem my-app.tar ec2-user@ec2-54-180-236-111.ap-northeast-2.compute.amazonaws.com:~/
+          
           # EC2에 SSH로 접속하여 Docker 이미지 로드 및 실행
           ssh -o StrictHostKeyChecking=no -i ssh_key.pem ec2-user@ec2-54-180-236-111.ap-northeast-2.compute.amazonaws.com << 'EOF'
             set -e  # 오류 발생 시 중단
