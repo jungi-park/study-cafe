@@ -84,7 +84,7 @@ jobs:
             docker load -i my-app.tar
           
             # Docker 컨테이너 실행
-            docker run -d --name my-app -p 8080:8080 --env SPRING_PROFILES_ACTIVE=prod my-app
+            docker run -d --name my-app -p 8080:8080 --env SPRING_PROFILES_ACTIVE=prod my-app:${{ github.sha }}
           EOF
 
       - name: Cleanup
