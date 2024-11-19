@@ -23,7 +23,3 @@ spring:
       auto-offset-reset: earliest
       key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
       value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
-  # 개발 DB용 도커 사용 중지
-  docker:
-    compose:
-      enabled: false
